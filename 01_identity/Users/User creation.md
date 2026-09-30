@@ -93,8 +93,51 @@ We can create user directly with CLI.<br>
 ![alt text](../../Screenshots/08_powershell_single_user.png)<br>
 
 Bulk users<br>
-[text](../../CLI/w1-bulk-create-users.sh)<br>
+[Check the script that I used to Create Users](../../CLI/w1-bulk-create-users.sh)<br>
 ![alt text](../../Screenshots/09_bulk_users_cli.png)<br>
 
 
 #### Graph Powershell
+
+![alt text](../../Screenshots/10_GRAPH_MS_SINGLEUSER.png)
+
+
+![alt text](<../../Screenshots/11_Remove -MgUSER_UserId.png>)
+
+
+
+![alt text](<../../Screenshots/12_bulk graph creation of users.png>)
+
+
+![alt text](../../Screenshots/13_csv_users.png)
+
+
+### Microsoft Graph PowerShell
+
+Microsoft Graph PowerShell provides a command-line interface for administering Microsoft Entra ID through the Microsoft Graph API. Instead of performing identity administration manually through the Entra portal, I can use PowerShell commands to create, retrieve, modify, and delete directory objects programmatically.<br>
+
+The `New-MgUser` command was used to provision individual users directly in Microsoft Entra ID. <br><br>
+![alt text](../../Screenshots/10_GRAPH_MS_SINGLEUSER.png)<br>
+
+The `-DisplayName`, `-UserPrincipalName`, `-MailNickName`, `-PasswordProfile`, and `-AccountEnabled` parameters define the properties of the identity being created. This demonstrates that PowerShell is not creating a separate type of user; it is interacting with the same Entra directory through Microsoft Graph.
+<br>
+The `Remove-MgUser` command was then used to demonstrate the opposite lifecycle operation: deleting an identity from the directory. <br>
+![alt text](<../../Screenshots/11_Remove -MgUSER_UserId.png>)<br>
+
+This introduced an important IAM concept — **identity lifecycle management** — where identities can be provisioned and deprovisioned through controlled administrative operations.<br>
+
+For the FinTrust environment, I extended this approach to bulk provisioning. Rather than writing 32 individual `New-MgUser` commands, the user information was stored in a CSV file and imported with `Import-Csv`. PowerShell then processed each row and passed its values to `New-MgUser`.<br>
+
+![alt text](<../../Screenshots/12_bulk graph creation of users.png>)<br><br>
+![alt text](<../../Screenshots/remaining _csv_bulk_graph.png>)<br>
+
+<br>
+The workflow can therefore be represented as:
+
+**CSV → PowerShell → Microsoft Graph → Microsoft Entra ID**<br><br>
+
+![alt text](../../Screenshots/13_csv_users.png)<br>
+
+This approach demonstrates how identity administration can move from manual portal-based operations toward repeatable and scalable automation. It also introduces an important security consideration: credentials must never be committed to a public GitHub repository. The actual lab CSV containing passwords is therefore kept outside the repository, while sanitized examples can be used for documentation.
+
+The key lesson is that **Microsoft Graph is the underlying API layer, while Microsoft Graph PowerShell provides a PowerShell-based administration interface to that API**. Learning both the portal and Graph-based administration provides a deeper understanding of how Entra identity operations can be performed manually, through commands, and eventually through automation.
