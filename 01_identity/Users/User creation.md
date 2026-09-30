@@ -96,22 +96,6 @@ Bulk users<br>
 [Check the script that I used to Create Users](../../CLI/w1-bulk-create-users.sh)<br>
 ![alt text](../../Screenshots/09_bulk_users_cli.png)<br>
 
-
-#### Graph Powershell
-
-![alt text](../../Screenshots/10_GRAPH_MS_SINGLEUSER.png)
-
-
-![alt text](<../../Screenshots/11_Remove -MgUSER_UserId.png>)
-
-
-
-![alt text](<../../Screenshots/12_bulk graph creation of users.png>)
-
-
-![alt text](../../Screenshots/13_csv_users.png)
-
-
 ### Microsoft Graph PowerShell
 
 Microsoft Graph PowerShell provides a command-line interface for administering Microsoft Entra ID through the Microsoft Graph API. Instead of performing identity administration manually through the Entra portal, I can use PowerShell commands to create, retrieve, modify, and delete directory objects programmatically.<br>
