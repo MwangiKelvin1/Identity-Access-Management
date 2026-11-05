@@ -99,4 +99,4 @@ Most SSPR will use only one. Mostly they send you an email with link or OTP.
 
 Password Change is the volutary changing of the password while Password Reset is usually forced when the user forgets it.
 
-We will continue from this point I show how IAM administer SSPR in the Entra ID to users and Group. That will need a licence Which we currently don't have.
+## We will continue from this point I show how IAM administer SSPR in the Entra ID to users and Group. That will need a licence Which we currently don't have.
